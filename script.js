@@ -12,7 +12,7 @@ const Engine = Matter.Engine,
 // エンジンの生成
 const engine = Engine.create({
   gravity: { // 重力設定
-    scale: 0.00002,
+    scale: 0.0,
     // x: 0.5,
     y: 0.05,
   },
@@ -43,10 +43,6 @@ const settings = {
     radius: Math.min(window.innerWidth, window.innerHeight) * 0.25,
     options: { isStatic: true, render: { fillStyle: '#ffffff' } }
   },
-  // resetPositions: {
-  //   ball1: { x: window.innerWidth / 2, y: window.innerHeight / 4 },
-  //   ball2: { x: window.innerWidth / 2, y: window.innerHeight - 50 }
-  // }
 }
 
 // レンダラーの生成
@@ -109,25 +105,6 @@ Composite.add(world, [...balls, ...createWallsAndPins()]);
 Render.run(render);
 var runner = Runner.create();
 Runner.run(runner, engine);
-
-// 画面外に出たボールの位置リセット関数
-// const resetBallPosition = (ball, position) => {
-//   Matter.Body.setPosition(ball, position);
-//   Matter.Body.setVelocity(ball, { x: 0, y: 0 });
-// };
-
-// 画面外にボールが出た場合
-// ボールが画面外に出た場合のイベント
-// Events.on(engine, 'beforeUpdate', function() {
-//   if (ball1.position.x < 0 || ball1.position.x > window.innerWidth || 
-//     ball1.position.y < 0 || ball1.position.y > window.innerHeight) {
-//     setTimeout(() => resetBallPosition(ball1, settings.resetPositions.ball1), 1000);
-//   }
-//   if (ball2.position.x < 0 || ball2.position.x > window.innerWidth || 
-//     ball2.position.y < 0 || ball2.position.y > window.innerHeight) {
-//     setTimeout(() => resetBallPosition(ball2, settings.resetPositions.ball1), 1000);
-//   }
-// });
 
 
 document.addEventListener('click', (event) => {
